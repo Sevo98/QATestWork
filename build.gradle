@@ -17,6 +17,7 @@ dependencies {
     implementation 'com.google.apis:google-api-services-gmail:v1-rev20220404-2.0.0'
     implementation group: 'com.google.apis', name: 'google-api-services-gmail', version: 'v1-rev110-1.25.0'
     implementation group: 'org.json', name: 'json', version: '20220924'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 
 }
 
