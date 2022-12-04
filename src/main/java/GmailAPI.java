@@ -5,7 +5,6 @@ import supportRequest.RequestForm;
 
 public class GmailAPI {
 
-
     public static void main(String[] args) throws Exception {
         //Задание 1 и 3
         GmailApiController.listMessages();

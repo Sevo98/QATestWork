@@ -56,8 +56,10 @@ public class HttpController {
             System.out.println(answer);
             String statusCode = "\"statusCode\": 200";
             if (!answer.contains(statusCode)) {
-                System.out.println("statusCode is not 200!");
+                throw new Exception("\"statusCode is not 200!\"");
             }
+        } catch (Exception e) {
+            System.out.println("statusCode is not 200!");
         }
         httpclient.close();
     }
