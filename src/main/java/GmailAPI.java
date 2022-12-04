@@ -1,8 +1,7 @@
 import gmail.GmailApiController;
 import supportRequest.HttpController;
+import supportRequest.RequestForm;
 
-import java.io.*;
-import java.security.GeneralSecurityException;
 
 public class GmailAPI {
 
@@ -12,7 +11,11 @@ public class GmailAPI {
         GmailApiController.listMessages();
 
         //Задание 2
-        HttpController.PostSend("hello world");
+        RequestForm requestForm = new RequestForm();
+        requestForm.setDepartment("Обжиговый цех");
+        requestForm.setPosition("Мол");
+        requestForm.setAgreement("1");
+        HttpController.PostSend(requestForm);
     }
 
 

@@ -32,7 +32,6 @@ public class GmailApiController {
             System.out.println("EMail: " + emailBody);
         } catch (NullPointerException e) {
             System.out.println("Letters not found");
-            ;
         }
     }
 

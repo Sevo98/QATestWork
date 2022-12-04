@@ -1,39 +1,64 @@
 package supportRequest;
 
-import org.json.JSONObject;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HttpController {
-    public static void PostSend(String postData) throws Exception {
-        URL url = new URL("https://gtest.dev.mk.ugmk.com/0200/api-mobile/v1/support/");
+    public static void PostSend(RequestForm requestForm) throws Exception {
+        final CloseableHttpClient httpclient = HttpClients.createDefault();
 
+        final HttpPost httpPost = new HttpPost("https://gtest.dev.mk.ugmk.com/0200/api-mobile/v1/support/");
+        final List<NameValuePair> params = new ArrayList<>();
 
-        URLConnection conn = url.openConnection();
-        conn.setDoOutput(true);
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        conn.setRequestProperty("Content-Length", Integer.toString(postData.length()));
-
-        try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
-            dos.writeBytes(postData);
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("fullName", requestForm.getFullName()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("mail", requestForm.getMail()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("phone", requestForm.getPhone()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("comment", requestForm.getComment()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("department", requestForm.getDepartment()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("position", requestForm.getPosition()));
+        }
+        if (requestForm.getAgreement() != null) {
+            params.add(new BasicNameValuePair("agreement", requestForm.getAgreement()));
         }
 
-        try (BufferedReader bf = new BufferedReader(new InputStreamReader(
-                conn.getInputStream())))
-        {
-            String line;
-            StringBuffer response = new StringBuffer();
-            while ((line = bf.readLine()) != null) {
-                response.append(line);
-//                System.out.println(line);
+        httpPost.setEntity(new UrlEncodedFormEntity(params));
+
+
+        try (
+                CloseableHttpResponse response2 = httpclient.execute(httpPost)
+        ) {
+
+            final HttpEntity entity2 = response2.getEntity();
+
+            System.out.println("Params for send: " + params);
+            String answer = EntityUtils.toString(entity2);
+            System.out.println(answer);
+            String statusCode = "\"statusCode\": 200";
+            if (!answer.contains(statusCode)) {
+                System.out.println("statusCode is not 200!");
             }
-            JSONObject jsonObject = new JSONObject(response.toString());
-            System.out.println(jsonObject);
         }
-
+        httpclient.close();
     }
 }
