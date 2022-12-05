@@ -1,5 +1,6 @@
-package gmail;
+package JUnit.gmail;
 
+import gmail.GmailApiController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

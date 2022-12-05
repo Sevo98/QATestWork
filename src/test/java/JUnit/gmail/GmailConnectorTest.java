@@ -1,5 +1,6 @@
-package gmail;
+package JUnit.gmail;
 
+import gmail.GmailConnector;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

@@ -1,7 +1,9 @@
-package supportRequest;
+package JUnit.supportRequest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import supportRequest.HttpController;
+import supportRequest.RequestForm;
 
 public class HttpControllerTest {
 
