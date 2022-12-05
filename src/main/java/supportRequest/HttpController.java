@@ -20,6 +20,12 @@ public class HttpController {
         final HttpPost httpPost = new HttpPost("https://gtest.dev.mk.ugmk.com/0200/api-mobile/v1/support/");
         final List<NameValuePair> params = new ArrayList<>();
 
+        if (requestForm == null) {
+            NullPointerException nullPointerException = new NullPointerException();
+            System.out.println("RequestFor is null");
+            throw nullPointerException;
+        }
+
         if (requestForm.getAgreement() != null) {
             params.add(new BasicNameValuePair("fullName", requestForm.getFullName()));
         }

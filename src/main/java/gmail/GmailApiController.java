@@ -11,12 +11,14 @@ import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static gmail.GmailConnector.auth;
+
 public class GmailApiController {
     private static final String user = "me";
 
     public static void printMessageTo() throws IOException, GeneralSecurityException {
         try {
-            Gmail service = GmailConnector.auth();
+            Gmail service = auth();
 
             //Access Gmail
             Gmail.Users.Messages.List request = service.users().messages().list(user).setQ("to: " + "jenleroy8@gmail.com");
@@ -32,12 +34,13 @@ public class GmailApiController {
             System.out.println("EMail: " + emailBody);
         } catch (NullPointerException e) {
             System.out.println("Letters not found");
+            throw e;
         }
     }
 
     public static void printMessageFrom() throws IOException, GeneralSecurityException {
         try {
-            Gmail service = GmailConnector.auth();
+            Gmail service = auth();
 
             //Access Gmail
             Gmail.Users.Messages.List request = service.users().messages().list(user).setQ("from: " + "jenleroy8@gmail.com");
@@ -53,13 +56,14 @@ public class GmailApiController {
             System.out.println("EMail: " + emailBody);
         } catch (NullPointerException e) {
             System.out.println("Letters not found");
+            throw e;
         }
 
     }
 
     public static void listMessages() throws IOException, GeneralSecurityException {
         try {
-            Gmail service = GmailConnector.auth();
+            Gmail service = auth();
 
             //Access Gmail
             Gmail.Users.Messages.List request = service.users().messages().list(user).setQ("from: " + "jenleroy8@gmail.com");
@@ -87,6 +91,7 @@ public class GmailApiController {
 
         } catch (NullPointerException e) {
             System.out.println("Letters not found");
+            throw e;
         }
 
     }

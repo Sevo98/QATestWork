@@ -2,6 +2,9 @@ package gmail;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 public class GmailConnectorTest {
     @Test
     void testGetAccess() {
@@ -9,7 +12,7 @@ public class GmailConnectorTest {
     }
 
     @Test
-    void testConnect() {
-        GmailConnector.getAccessToken();
+    void testAuth() throws GeneralSecurityException, IOException {
+        GmailConnector.auth();
     }
 }

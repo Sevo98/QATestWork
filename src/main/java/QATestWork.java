@@ -3,7 +3,7 @@ import supportRequest.HttpController;
 import supportRequest.RequestForm;
 
 
-public class GmailAPI {
+public class QATestWork {
 
     public static void main(String[] args) throws Exception {
         //Задание 1 и 3
@@ -16,6 +16,4 @@ public class GmailAPI {
         requestForm.setAgreement("1");
         HttpController.PostSend(requestForm);
     }
-
-
 }

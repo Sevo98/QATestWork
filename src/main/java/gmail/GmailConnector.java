@@ -26,8 +26,6 @@ public class GmailConnector {
 
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
-    private static final String user = "me";
-    static Gmail service = null;
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     public static Gmail auth() throws IOException, GeneralSecurityException {
