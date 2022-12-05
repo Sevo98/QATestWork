@@ -1,5 +1,8 @@
 package RestAssured;
 
+/**
+ * Pojo класс Json ответа
+ */
 public class JsonAnswerPojo {
     private String statusCode;
 

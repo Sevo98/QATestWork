@@ -13,7 +13,15 @@ import org.apache.hc.core5.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс для отправки HTTP запросов по указанному адресу
+ */
 public class HttpController {
+    /**
+     * Метод отправки Post запроса
+     * @param requestForm класс с данными сообщения техподдержке
+     * @throws Exception
+     */
     public static void PostSend(RequestForm requestForm) throws Exception {
         final CloseableHttpClient httpclient = HttpClients.createDefault();
 

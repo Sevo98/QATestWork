@@ -21,6 +21,9 @@ import java.security.GeneralSecurityException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Класс подключения к Gmail API
+ */
 public class GmailConnector {
     private static final String APPLICATION_NAME = "Gmail API Java Quickstart";
 
@@ -28,6 +31,12 @@ public class GmailConnector {
 
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
+    /**
+     * Метод авторизации в Gmail
+     * @return объект service для работы с Gmail API
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public static Gmail auth() throws IOException, GeneralSecurityException {
         InputStream in = GmailConnector.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -48,6 +57,10 @@ public class GmailConnector {
         return service;
     }
 
+    /**
+     * Метод получени токена авторизации по client_id и client_secret
+     * @return токен accessToken для авторизации в Gmail. Действует около часа
+     */
     public static String getAccessToken() {
         try {
             Map<String, Object> params = new LinkedHashMap<>();

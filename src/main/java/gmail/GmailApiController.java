@@ -13,9 +13,17 @@ import java.util.List;
 
 import static gmail.GmailConnector.auth;
 
+/**
+ * Класс для работы с Gmail API
+ */
 public class GmailApiController {
     private static final String user = "me";
 
+    /**
+     * Метод запроса последнего письма из папки входящих
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public static void printMessageTo() throws IOException, GeneralSecurityException {
         try {
             Gmail service = auth();
@@ -38,6 +46,11 @@ public class GmailApiController {
         }
     }
 
+    /**
+     * Метод запроса последнего письма из папки исходящих
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public static void printMessageFrom() throws IOException, GeneralSecurityException {
         try {
             Gmail service = auth();
@@ -61,6 +74,11 @@ public class GmailApiController {
 
     }
 
+    /**
+     * Метод запроса всех писем из папки входящих
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public static void listMessages() throws IOException, GeneralSecurityException {
         try {
             Gmail service = auth();

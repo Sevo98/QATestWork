@@ -5,8 +5,15 @@ import org.junit.jupiter.api.Test;
 import supportRequest.HttpController;
 import supportRequest.RequestForm;
 
+/**
+ * Класс проверки методов HttpController
+ */
 public class HttpControllerTest {
 
+    /**
+     * Проверка метода PostSend() с инициализированными данными
+     * @throws Exception
+     */
     @Test
     void testPostSendWithData() throws Exception {
 
@@ -18,6 +25,9 @@ public class HttpControllerTest {
         HttpController.PostSend(requestForm);
     }
 
+    /**
+     * Проверка метода PostSend() с отправкой пустого объекта
+     */
     @Test
     void testPostSendWithoutData() {
         RequestForm requestForm = null;

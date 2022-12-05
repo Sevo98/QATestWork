@@ -7,6 +7,9 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+/**
+ * Класс спецификаций запросов
+ */
 public class Specifications {
     public static RequestSpecification requestSpecification(String url) {
         return new RequestSpecBuilder()
@@ -15,12 +18,6 @@ public class Specifications {
                 .build();
     }
     public static ResponseSpecification responseSpecificationOK200() {
-        return new ResponseSpecBuilder()
-                .expectStatusCode(200)
-                .build();
-    }
-
-    public static ResponseSpecification responseSpecificationOK400() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .build();

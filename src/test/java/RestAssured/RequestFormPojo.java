@@ -1,5 +1,8 @@
 package RestAssured;
 
+/**
+ * Pojo класс формы сообщения для техподдержки
+ */
 public class RequestFormPojo {
     private String fullName;
     private String mail;

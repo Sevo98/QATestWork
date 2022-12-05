@@ -1,6 +1,8 @@
 package supportRequest;
 
-
+/**
+ * Класс формы сообщения для техподдержки
+ */
 public class RequestForm {
     private String fullName;
     private String mail;
